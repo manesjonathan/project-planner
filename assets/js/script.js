@@ -7,27 +7,28 @@ const todo = document.querySelector(".todo");
 const doing = document.querySelector(".doing");
 const done = document.querySelector(".done");
 const buttonAdd = document.querySelector(".add");
+const aside = document.querySelector("aside");
 
 buttonAdd.addEventListener("click", () => {
-    let name = prompt("name");
+ 
+/*     main.style.display = "block"; */
+ 
+        let name = prompt("name");
     let status = prompt("status");
     let description = prompt("description");
     let creationTime = new Date();
     let deadLine = new Date("2023/01/01");
 
     createTask(name, status, description, creationTime, deadLine);
-    update();
+    update(); 
 });
 update();
 
 function update() {
-    let button = todo.children[0];
-
     todo.innerHTML = null;
     doing.innerHTML = null;
     done.innerHTML = null;
-    todo.prepend(button);
-
+    
     let taskList = JSON.parse(sessionStorage.getItem("task-list"));
     for (let task of taskList) {
         let article = createArticle(task);
