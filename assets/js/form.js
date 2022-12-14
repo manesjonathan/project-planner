@@ -1,5 +1,3 @@
-import { states } from "./config.js";
-import { update } from "./script.js";
 import { Task } from "./Task.js";
 
 let inputName = document.querySelector(".input-name");
@@ -9,9 +7,8 @@ let inputDeadline = document.querySelector(".input-deadline");
 let submit = document.querySelector(".submit-button");
 
 submit.addEventListener("click", (e) => {
-    let task = createTask(inputName.value, inputStatesList.value, inputDescription.value, new Date(), new Date(inputDeadline.value));
-    console.log(task);
-    setInterval(update, 1000) 
+    createTask(inputName.value, inputStatesList.value, inputDescription.value, new Date(), new Date(inputDeadline.value));
+    location.reload();
 });
 
 function createTask(name, status, description, creationTime, deadLine,) {

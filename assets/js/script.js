@@ -1,7 +1,5 @@
 import { states } from "./config.js";
-import { Task } from "./Task.js";
 
-console.log(JSON.parse(sessionStorage.getItem("task-list")));
 const main = document.querySelector("main");
 const todo = document.querySelector(".todo-div");
 const doing = document.querySelector(".doing-div");
@@ -10,15 +8,14 @@ const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
 
 let interval = setInterval(update, 1000);
+console.log(JSON.parse(sessionStorage.getItem("task-list")));
 
 buttonAdd.addEventListener("click", () => {
     main.style.display = "none";
     aside.style.display = "flex";
     buttonAdd.style.display = "none";
     clearInterval(interval);
-
 });
-
 
 export function update() {
     main.style.display = "flex";
@@ -52,7 +49,6 @@ function addArticleToSection(task, article) {
             done.appendChild(article);
             break;
     }
-
 }
 
 function createArticle(task) {
@@ -79,16 +75,16 @@ function createArticle(task) {
     endDate.innerText = deadLine.toLocaleDateString("fr-FR");
     article.appendChild(endDate);
 
-    let delay = document.createElement("h4")
+    let delay = document.createElement("h4");
 
     let deadline = new Date(task.deadLine) - new Date();
 
     if (deadline >= (1000 * 60 * 60 * 24)) {
-        delay.innerText = Math.ceil(deadline / (1000 * 60 * 60 * 24)) + " jours restants"
+        delay.innerText = Math.ceil(deadline / (1000 * 60 * 60 * 24)) + " jours restants";
     } else {
-        delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR")
+        delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR");
     }
-    article.appendChild(delay)
+    article.appendChild(delay);
 
     return article;
 }
