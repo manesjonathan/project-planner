@@ -1,0 +1,19 @@
+
+main{
+    display: flex;
+    flex-direction: column;
+
+    .todo{
+        background-color: aqua;
+    }
+
+
+    .doing{
+        background-color: coral;
+    }
+
+    .done{
+        background-color: cornflowerblue;
+    }
+}
+

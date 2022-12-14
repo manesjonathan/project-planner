@@ -1,1 +1,13 @@
-/*# sourceMappingURL=style.css.map */
+main {
+  display: flex;
+  flex-direction: column;
+}
+main .todo {
+  background-color: aqua;
+}
+main .doing {
+  background-color: coral;
+}
+main .done {
+  background-color: cornflowerblue;
+}/*# sourceMappingURL=style.css.map */
