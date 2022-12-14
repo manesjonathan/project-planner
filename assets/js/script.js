@@ -52,13 +52,13 @@ function addArticleToSection(task, article) {
 
 }
 
-function createTask(name, status, description, creationTime, deadLine) {
+function createTask(name, status, description, creationTime, deadLine,) {
     let task = new Task(
         name,
         status,
         description,
         creationTime,
-        deadLine
+        deadLine,
     );
 
     let taskList = JSON.parse(sessionStorage.getItem("task-list"));
@@ -102,6 +102,10 @@ function createArticle(task) {
     let endDate = document.createElement("h3");
     endDate.innerText = deadLine.toLocaleDateString("fr-FR");
     article.appendChild(endDate);
+
+    let delay= document.createElement("h4")
+    delay.innerText= (task.delay/(1000*60*60*24)).toFixed(0) + " jours restant"
+    article.appendChild(delay)
 
     return article;
 }
