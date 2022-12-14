@@ -3,27 +3,21 @@ import { Task } from "./Task.js";
 
 console.log(JSON.parse(sessionStorage.getItem("task-list")));
 const main = document.querySelector("main");
-const todo = document.querySelector(".todo");
-const doing = document.querySelector(".doing");
-const done = document.querySelector(".done");
+const todo = document.querySelector(".todo-div");
+const doing = document.querySelector(".doing-div");
+const done = document.querySelector(".done-div");
 const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
 
-buttonAdd.addEventListener("click", () => {
+let interval = setInterval(update, 1000);
 
+buttonAdd.addEventListener("click", () => {
     main.style.display = "none";
     aside.style.display = "block";
-    buttonAdd.style.display = "none";
+    clearInterval(interval);
 
-    /*         let name = prompt("name");
-        let status = prompt("status");
-        let description = prompt("description");
-        let creationTime = new Date();
-        let deadLine = new Date("2023/01/01");
-    
-        createTask(name, status, description, creationTime, deadLine);
-        update();  */
 });
+
 
 export function update() {
     main.style.display = "flex";
@@ -34,9 +28,11 @@ export function update() {
     done.innerHTML = null;
 
     let taskList = JSON.parse(sessionStorage.getItem("task-list"));
-    for (let task of taskList) {
-        let article = createArticle(task);
-        addArticleToSection(task, article);
+    if (taskList !== null) {
+        for (let task of taskList) {
+            let article = createArticle(task);
+            addArticleToSection(task, article);
+        }
     }
 }
 
@@ -82,17 +78,15 @@ function createArticle(task) {
     article.appendChild(endDate);
 
     let delay = document.createElement("h4")
-    if ((task.delay / (1000 * 60 * 60 * 24)).toFixed(0)>1){
-        delay.innerText = task.delay /(1000*60*60*24).toFixed(0) + " jours restant."
 
-    }
-    else{
-        delay.innerText = new Date(task.delay).toLocaleTimeString("fr-FR")
-    }
-    
+    let deadline = new Date(task.deadLine) - new Date();
 
-    
+    if (deadline >= (1000 * 60 * 60 * 24)) {
+        delay.innerText = Math.ceil(deadline / (1000 * 60 * 60 * 24)) + " jours restants"
+    } else {
+        delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR")
+    }
     article.appendChild(delay)
-    
+
     return article;
 }

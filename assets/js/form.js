@@ -11,8 +11,7 @@ let submit = document.querySelector(".submit-button");
 submit.addEventListener("click", (e) => {
     let task = createTask(inputName.value, inputStatesList.value, inputDescription.value, new Date(), new Date(inputDeadline.value));
     console.log(task);
-    update();
- 
+    setInterval(update, 1000) 
 });
 
 function createTask(name, status, description, creationTime, deadLine,) {

@@ -41,6 +41,7 @@ main .done {
   flex-direction: column;
   align-items: center;
   margin: 5vw;
+  min-height: 50vw;
 }
 main .todo h2,
 main .doing h2,
@@ -63,9 +64,12 @@ main .done p {
   font-weight: 400;
 }
 
+.add-task-form {
+  display: none;
+  flex-direction: column;
+}
+
 footer {
-  position: absolute;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
