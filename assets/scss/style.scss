@@ -2,20 +2,21 @@
   margin: 0;
   padding: 0;
 }
-main {
+
+header {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  text-align: center;
 
-  .todo {
-    background-color: rgba(0, 255, 255, 0);
+  h1 {
+    width: 100%;
   }
 
-  .doing {
-    background-color: coral;
-  }
-
-  .done {
-    background-color: cornflowerblue;
+  button {
+    position: absolute;
+    margin-right: 5%;
+    right: 0;
   }
 }
 
@@ -23,11 +24,6 @@ a {
   text-decoration: none;
   color: black;
 }
-
-h1 {
-  text-align: center;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -63,9 +59,39 @@ main {
   }
 }
 
+.todo {
+  background-color: rgba(0, 255, 255, 0);
+}
+
+.doing {
+  background-color: coral;
+}
+
+.done {
+  background-color: cornflowerblue;
+}
+
 .add-task-form {
   display: none;
   flex-direction: column;
+  input {
+    padding: 2%;
+    margin: 0 5%;
+  }
+  select {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  label {
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  
+  button {
+    margin: 5%;
+  }
 }
 
 footer {
@@ -77,10 +103,10 @@ footer {
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    width: 100%;
     justify-content: space-around;
     text-transform: capitalize;
     font-weight: 600;
+    padding: 5%;
   }
 
   p {

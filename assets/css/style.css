@@ -3,27 +3,24 @@
   padding: 0;
 }
 
-main {
+header {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  text-align: center;
 }
-main .todo {
-  background-color: rgba(0, 255, 255, 0);
+header h1 {
+  width: 100%;
 }
-main .doing {
-  background-color: coral;
-}
-main .done {
-  background-color: cornflowerblue;
+header button {
+  position: absolute;
+  margin-right: 5%;
+  right: 0;
 }
 
 a {
   text-decoration: none;
   color: black;
-}
-
-h1 {
-  text-align: center;
 }
 
 main {
@@ -64,9 +61,37 @@ main .done p {
   font-weight: 400;
 }
 
+.todo {
+  background-color: rgba(0, 255, 255, 0);
+}
+
+.doing {
+  background-color: coral;
+}
+
+.done {
+  background-color: cornflowerblue;
+}
+
 .add-task-form {
   display: none;
   flex-direction: column;
+}
+.add-task-form input {
+  padding: 2%;
+  margin: 0 5%;
+}
+.add-task-form select {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.add-task-form label {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.add-task-form button {
+  margin: 5%;
 }
 
 footer {
@@ -78,10 +103,10 @@ footer ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  width: 100%;
   justify-content: space-around;
   text-transform: capitalize;
   font-weight: 600;
+  padding: 5%;
 }
 footer p {
   padding: 10%;

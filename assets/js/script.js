@@ -13,7 +13,8 @@ let interval = setInterval(update, 1000);
 
 buttonAdd.addEventListener("click", () => {
     main.style.display = "none";
-    aside.style.display = "block";
+    aside.style.display = "flex";
+    buttonAdd.style.display = "none";
     clearInterval(interval);
 
 });
@@ -22,6 +23,7 @@ buttonAdd.addEventListener("click", () => {
 export function update() {
     main.style.display = "flex";
     aside.style.display = "none";
+    buttonAdd.style.display = "block";
 
     todo.innerHTML = null;
     doing.innerHTML = null;
