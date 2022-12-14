@@ -18,7 +18,6 @@ buttonAdd.addEventListener("click", () => {
 });
 
 export function update() {
-    main.style.display = "flex";
     aside.style.display = "none";
     buttonAdd.style.display = "block";
 
