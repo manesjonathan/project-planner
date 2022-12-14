@@ -8,6 +8,7 @@ export class Task {
         this.description = description;
         this.creationTime = creationTime;
         this.deadLine = deadLine;
+        this.delay = deadLine-creationTime;
     }
 
     getId() {
