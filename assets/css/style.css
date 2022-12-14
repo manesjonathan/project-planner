@@ -1,13 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 main {
   display: flex;
   flex-direction: column;
 }
 main .todo {
-  background-color: aqua;
+  background-color: rgba(0, 255, 255, 0);
 }
 main .doing {
   background-color: coral;
 }
 main .done {
   background-color: cornflowerblue;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+main section {
+  border: 1px solid black;
+}
+main .todo,
+main .doing,
+main .done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5vw;
+}
+main .todo h2,
+main .doing h2,
+main .done h2 {
+  font-size: 2rem;
+  padding: 10%;
+  text-transform: uppercase;
+  text-align: center;
+}
+main .todo h3,
+main .doing h3,
+main .done h3 {
+  padding: 10%;
+  font-size: 1.5rem;
+}
+main .todo p,
+main .doing p,
+main .done p {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+footer ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  width: 100%;
+  justify-content: space-around;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+footer p {
+  padding: 10%;
 }/*# sourceMappingURL=style.css.map */

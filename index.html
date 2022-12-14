@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Project Planner</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script defer src="/assets/js/script.js" type="module"></script>
+    <script defer src="/assets/js/form.js" type="module"></script>
 </head>
 
 <body>
@@ -15,23 +17,43 @@
         <button class="add">Add</button>
     </header>
     <main>
-    
-        <section class="todo">
 
+        <section class="todo">
+            <h2>To do</h2>
         </section>
         <section class="doing">
-
+            <h2>Doing</h2>
         </section>
         <section class="done">
-
+            <h2>Done</h2>
         </section>
     </main>
+    <aside class="add-task-form" hidden>
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="input-name">
+            <select class="status-list" name="statuslist">
+                <option value="todo">Todo</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+            </select>
+            <label for="description">Description:</label>
+            <input type="text" name="description" class="input-description">
+            <input type="hidden" class="startdate">
+            <label for="deadline">Deadline:</label>
+            <input type="date" name="deadline" class="input-deadline">
+            <button class="submit-button">Add task</button>
+
+
+
+    </aside>
     <footer>
+        <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus accusantium consequuntur libero soluta? Voluptas unde possimus nulla velit excepturi animi, tempora earum ab adipisci eveniet! Consequuntur vero vel deleniti velit.</p>
         <ul class="names">
-            <li><a href ="https://github.com/CV136">Celine V.</a></li>
+            <li><a href="https://github.com/CV136">Celine V.</a></li>
             <li><a href="https://github.com/manesjonathan">Jonathan M.</a></li>
             <li><a href="https://github.com/Ed0598">Edouard d.</a></li>
         </ul>
     </footer>
 </body>
+
 </html>
