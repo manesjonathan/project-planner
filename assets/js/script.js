@@ -8,6 +8,7 @@ const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
 const filterDelay = document.querySelector(".delay-filter")
 const filterName = document.querySelector(".name-filter")
+const filterToDo= document.querySelector(".todo--filter")
 
 
 
@@ -27,6 +28,20 @@ filterDelay.addEventListener("click", () => {
 filterName.addEventListener("click", () => {
     filterByName()
 });
+
+filterToDo.addEventListener("click",() =>{
+        let taskList=JSON.parse(sessionStorage.getItem("task-list"));
+
+        taskList.filter(function(element){
+        return element.status === states.todo
+
+       
+    })
+
+       sessionStorage.setItem("task-list",JSON.stringify(taskList))
+       console.log(JSON.parse(sessionStorage.getItem("task-list")))
+
+})
 
 export function update() {
     aside.style.display = "none";
@@ -130,6 +145,6 @@ function fixedHeader() {
   }
 
 
+
 let interval = setInterval(update, 1000);
-console.log(JSON.parse(sessionStorage.getItem("task-list")));
 window.onscroll = function() {fixedHeader()};
