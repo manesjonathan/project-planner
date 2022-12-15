@@ -80,41 +80,28 @@ main {
         padding: 0;
       }
 
-      h3 {
+    h3 {
         font-size: 1rem;
       }
       h4 {
-      }
-      p {
+    }
+    p {
         font-size: 1rem;
-        font-weight: 400;
-      }
+      font-weight: 400;
     }
   }
 }
 
 .todo {
-  .todo-div {
-    article {
-      background-color: #E87461;
-    }
-  }
+  background-color: rgba(0, 255, 255, 0);
 }
 
 .doing {
-  .doing-div {
-    article {
-      background-color: #D5D887;
-    }
-  }
+  background-color: coral;
 }
 
 .done {
-  .done-div {
-    article {
-      background-color: #A1CF6B;
-    }
-  }
+  background-color: cornflowerblue;
 }
 
 .add-task-form {
@@ -138,20 +125,13 @@ main {
   button {
     margin: 5%;
   }
+  
 }
-
 footer {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
   align-items: center;
-  background-color: #555555;
-  color: white;
-
-  a {
-    text-decoration: none;
-    color: white;
-  }
 
   ul {
     display: flex;
@@ -175,10 +155,12 @@ footer {
     align-content: center;
     h1 {
       width: 100%;
-
       text-align: center;
     }
     button {
+      position: absolute;
+      right: 0;
+      margin: 0 5%;
     }
   }
   main {
@@ -189,6 +171,7 @@ footer {
       min-height: 75vh;
     }
   }
+  
 
   footer {
     ul {
