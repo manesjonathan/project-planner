@@ -8,6 +8,8 @@
     <title>Project Planner</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script defer src="/assets/js/script.js" type="module"></script>
+    <script type="module">import { ondragover } from "/assets/js/script.js"; window.ondragover = ondragover;</script>
+    <script type="module">import { ondrop} from "/assets/js/script.js"; window.ondrop = ondrop;</script>
     <script defer src="/assets/js/form.js" type="module"></script>
 </head>
 
@@ -20,15 +22,15 @@
     <main>
         <section class="todo">
             <h2>To do</h2>
-            <div class="todo-div"></div>
+            <div class="todo-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
         </section>
         <section class="doing">
             <h2>Doing</h2>
-            <div class="doing-div"></div>
+            <div class="doing-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
         </section>
         <section class="done">
             <h2>Done</h2>
-            <div class="done-div"></div>
+            <div class="done-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
         </section>
     </main>
 

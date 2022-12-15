@@ -57,6 +57,8 @@ function createArticle(task) {
     let article = document.createElement("article");
     article.classList.toggle(task.id);
     article.classList.toggle(task.status);
+    article.setAttribute("draggable", true);
+    article.setAttribute("onDragStart", onDragStart(event))
 
     let title = document.createElement("h2");
     title.innerText = task.name;
@@ -86,4 +88,23 @@ function createArticle(task) {
     article.appendChild(delay);
 
     return article;
+}
+
+
+function onDragStart(event) {
+    event.dataTansfer.setData("text/plain", event.target.id);
+    //event.currentTarget.style.opacity = "0.6";
+}
+
+function onDragOver(event) {
+    event.preventDefault();
+}
+
+function onDrop(event) {
+    const id = event.dataTansfer.getData("text");
+    const draggableElement = document.getElementById(id);
+    const dropzone = event.target;
+    dropzone.appendChild(draggableElement);
+    //draggableElement.style.opacity = "1";
+    event.dataTransfer.clearData();
 }
