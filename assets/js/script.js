@@ -8,7 +8,7 @@ const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
 const filterDelay = document.querySelector(".delay-filter")
 const filterName = document.querySelector(".name-filter")
-const filterToDo= document.querySelector(".todo--filter")
+const filterToDo = document.querySelector(".todo--filter")
 
 
 
@@ -29,17 +29,17 @@ filterName.addEventListener("click", () => {
     filterByName()
 });
 
-filterToDo.addEventListener("click",() =>{
-        let taskList=JSON.parse(sessionStorage.getItem("task-list"));
+filterToDo.addEventListener("click", () => {
+    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
 
-        taskList.filter(function(element){
+    taskList.filter(function (element) {
         return element.status === states.todo
 
-       
+
     })
 
-       sessionStorage.setItem("task-list",JSON.stringify(taskList))
-       console.log(JSON.parse(sessionStorage.getItem("task-list")))
+    sessionStorage.setItem("task-list", JSON.stringify(taskList))
+    console.log(JSON.parse(sessionStorage.getItem("task-list")))
 
 })
 
@@ -81,10 +81,10 @@ function createArticle(task) {
     let deadLine = new Date(task.deadLine);
 
     let article = document.createElement("article");
-    article.classList.toggle(task.id);
+    article.classList.toggle(task.status + "-" + task.id);
     article.classList.toggle(task.status);
-    article.setAttribute("draggable", true);
-    article.setAttribute("onDragStart", onDragStart(event))
+    article.setAttribute("draggable", "true");
+    article.setAttribute("ondragstart", "onDragStart(event)")
 
     let title = document.createElement("h2");
     title.innerText = task.name;
@@ -117,23 +117,28 @@ function createArticle(task) {
 }
 
 
-function onDragStart(event) {
-    event.dataTansfer.setData("text/plain", event.target.id);
+export function onDragStart(event) {
+    event.dataTransfer.setData("text", event.target.classList[0]);
     //event.currentTarget.style.opacity = "0.6";
 }
 
-function onDragOver(event) {
+export function onDragOver(event) {
     event.preventDefault();
 }
 
-function onDrop(event) {
-    const id = event.dataTansfer.getData("text");
-    const draggableElement = document.getElementById(id);
-    const dropzone = event.target;
+export function onDrop(event) {
+    const id = event.dataTransfer.getData("text");
+    console.log(id);
+
+    const draggableElement = document.querySelector("." + id);
+    console.log(draggableElement);
+    const dropzone = event.target.parentElement.parentElement;
+
     dropzone.appendChild(draggableElement);
     //draggableElement.style.opacity = "1";
     event.dataTransfer.clearData();
 }
+
 let taskList = JSON.parse(sessionStorage.getItem("task-list"))
 
 function filterByName() {
@@ -158,13 +163,13 @@ function fixedHeader() {
     let header = document.querySelector("header");
     let sticky = header.offsetTop;
     if (window.pageYOffset > sticky) {
-      header.classList.add("sticky");
+        header.classList.add("sticky");
     } else {
-      header.classList.remove("sticky");
+        header.classList.remove("sticky");
     }
-  }
+}
 
 
 
 let interval = setInterval(update, 1000);
-window.onscroll = function() {fixedHeader()};
+window.onscroll = function () { fixedHeader() };
