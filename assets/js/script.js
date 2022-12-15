@@ -6,9 +6,8 @@ const doing = document.querySelector(".doing-div");
 const done = document.querySelector(".done-div");
 const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
-
-let interval = setInterval(update, 1000);
-console.log(JSON.parse(sessionStorage.getItem("task-list")));
+const filterDelay=document.querySelector(".delay--filter")
+const filterName=document.querySelector(".name--filter")
 
 buttonAdd.addEventListener("click", () => {
     main.style.display = "none";
@@ -16,6 +15,12 @@ buttonAdd.addEventListener("click", () => {
     buttonAdd.style.display = "none";
     clearInterval(interval);
 });
+filterDelay.addEventListener("click",()=>{
+    filterByDelay()
+})
+filterName.addEventListener("click",()=>{
+    filterByName()
+})
 
 export function update() {
     aside.style.display = "none";
@@ -81,9 +86,34 @@ function createArticle(task) {
     if (deadline >= (1000 * 60 * 60 * 24)) {
         delay.innerText = Math.ceil(deadline / (1000 * 60 * 60 * 24)) + " jours restants";
     } else {
-        delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR");
+        delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR") + " heures restantes";
     }
     article.appendChild(delay);
 
     return article;
 }
+
+let taskList= JSON.parse(sessionStorage.getItem("task-list"))
+
+function filterByName(){
+    if (taskList !== null){
+        taskList.sort((a,b) => (a.name > b.name)? 1 : -1);
+    }
+    console.log(taskList)
+    sessionStorage.setItem('task-list',JSON.stringify(taskList))
+    
+
+}
+function filterByDelay(){
+    if (taskList !== null){
+        taskList.sort((a,b) => (a.delay > b.delay)? 1 : -1);
+    }
+    console.log(taskList)
+    sessionStorage.setItem('task-list',JSON.stringify(taskList))
+    
+}
+
+
+
+let interval = setInterval(update, 1000);
+console.log(JSON.parse(sessionStorage.getItem("task-list")));
