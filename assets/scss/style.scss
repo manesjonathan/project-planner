@@ -17,7 +17,7 @@ header {
   min-height: 10vh;
   width: 100%;
 
-  h1{
+  h1 {
     font-size: 1.5rem;
     text-align: center;
   }
@@ -77,7 +77,7 @@ main {
     article {
       display: flex;
       flex-direction: column;
-      margin: 1%;
+      margin-top: 1%;
       padding: 2%;
 
       h2 {
@@ -101,7 +101,7 @@ main {
 .todo {
   .todo-div {
     article {
-      background-color: #E87461;
+      background-color: #e87461;
     }
   }
 }
@@ -109,7 +109,7 @@ main {
 .doing {
   .doing-div {
     article {
-      background-color: #D5D887;
+      background-color: #d5d887;
     }
   }
 }
@@ -117,7 +117,7 @@ main {
 .done {
   .done-div {
     article {
-      background-color: #A1CF6B;
+      background-color: #a1cf6b;
     }
   }
 }
@@ -152,6 +152,7 @@ footer {
   align-items: center;
   background-color: #555555;
   color: white;
+  padding: 2%;
 
   a {
     text-decoration: none;
@@ -165,10 +166,7 @@ footer {
     justify-content: space-around;
     text-transform: capitalize;
     font-weight: 600;
-  }
-
-  p {
-    padding: 5%;
+    margin-top: 2%;
   }
 }
 
@@ -180,10 +178,7 @@ footer {
     align-content: center;
     h1 {
       width: 100%;
-
       text-align: center;
-    }
-    button {
     }
   }
   main {
@@ -200,7 +195,6 @@ footer {
       display: flex;
       flex-direction: row;
       width: 75%;
-      margin-bottom: 2%;
     }
   }
 }

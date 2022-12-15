@@ -74,7 +74,7 @@ main section h2 {
 main section article {
   display: flex;
   flex-direction: column;
-  margin: 1%;
+  margin-top: 1%;
   padding: 2%;
 }
 main section article h2 {
@@ -90,15 +90,15 @@ main section article p {
 }
 
 .todo .todo-div article {
-  background-color: #E87461;
+  background-color: #e87461;
 }
 
 .doing .doing-div article {
-  background-color: #D5D887;
+  background-color: #d5d887;
 }
 
 .done .done-div article {
-  background-color: #A1CF6B;
+  background-color: #a1cf6b;
 }
 
 .add-task-form {
@@ -129,6 +129,7 @@ footer {
   align-items: center;
   background-color: #555555;
   color: white;
+  padding: 2%;
 }
 footer a {
   text-decoration: none;
@@ -141,9 +142,7 @@ footer ul {
   justify-content: space-around;
   text-transform: capitalize;
   font-weight: 600;
-}
-footer p {
-  padding: 5%;
+  margin-top: 2%;
 }
 
 @media screen and (min-width: 600px) {
@@ -168,6 +167,5 @@ footer p {
     display: flex;
     flex-direction: row;
     width: 75%;
-    margin-bottom: 2%;
   }
 }/*# sourceMappingURL=style.css.map */
