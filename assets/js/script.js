@@ -116,7 +116,6 @@ function createArticle(task) {
     return article;
 }
 
-<<<<<<< HEAD
 
 function onDragStart(event) {
     event.dataTansfer.setData("text/plain", event.target.id);
@@ -135,7 +134,6 @@ function onDrop(event) {
     //draggableElement.style.opacity = "1";
     event.dataTransfer.clearData();
 }
-=======
 let taskList = JSON.parse(sessionStorage.getItem("task-list"))
 
 function filterByName() {
@@ -170,4 +168,3 @@ function fixedHeader() {
 
 let interval = setInterval(update, 1000);
 window.onscroll = function() {fixedHeader()};
->>>>>>> e2c63ca949d7c04397aeb4efdae9b98a3e350ce6
