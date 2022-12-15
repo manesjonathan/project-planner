@@ -119,7 +119,6 @@ function createArticle(task) {
 
 function onDragStart(event) {
     event.dataTansfer.setData("text/plain", event.target.id);
-    //event.currentTarget.style.opacity = "0.6";
 }
 
 function onDragOver(event) {
@@ -131,7 +130,6 @@ function onDrop(event) {
     const draggableElement = document.getElementById(id);
     const dropzone = event.target;
     dropzone.appendChild(draggableElement);
-    //draggableElement.style.opacity = "1";
     event.dataTransfer.clearData();
 }
 let taskList = JSON.parse(sessionStorage.getItem("task-list"))
