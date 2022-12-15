@@ -31,13 +31,10 @@ filterName.addEventListener("click", () => {
 
 filterToDo.addEventListener("click", () => {
     let taskList = JSON.parse(sessionStorage.getItem("task-list"));
-    taskList.filter(function (elem) {
+    let filteredTaskList = taskList.filter(function (elem) {
         return elem.status === states.todo
-        sessionStorage.setItem("task-list", JSON.stringify(taskList))
-        console.log(JSON.parse(sessionStorage.getItem("task-list")))
-
     })
-   
+        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList))
 })
 
 export function update() {
