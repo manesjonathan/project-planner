@@ -97,6 +97,11 @@ main {
   }
 }
 
+.todo-div, .doing-div, .done-div{
+  min-height: 100%;
+}
+
+
 .todo {
   .todo-div {
     article {

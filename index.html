@@ -8,9 +8,6 @@
     <title>Project Planner</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script defer src="/assets/js/script.js" type="module"></script>
-    <script type="module">import { onDragOver } from "/assets/js/script.js"; window.onDragOver = onDragOver;</script>
-    <script type="module">import { onDrop} from "/assets/js/script.js"; window.onDrop = onDrop;</script>
-    <script type="module">import { onDragStart} from "/assets/js/script.js"; window.onDragStart = onDragStart;</script>
     <script defer src="/assets/js/form.js" type="module"></script>
 </head>
 
@@ -20,22 +17,22 @@
         <button class="add">Add task</button>
         <button class="delay-filter">Sort by delay</button>
         <button class="name-filter">Sort by name</button>
-        <input type="checkbox" class="todo-filter" id="todo--filter"><label for="todo--filter">ToDo Filter</label> 
+        <input type="checkbox" class="todo-filter" id="todo--filter"><label for="todo--filter">ToDo Filter</label>
         </input>
     </header>
 
     <main>
         <section class="todo">
             <h2>To do</h2>
-            <div class="todo-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div class="todo-div todo dropzone" ></div>
         </section>
         <section class="doing">
             <h2>Doing</h2>
-            <div class="doing-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div class="doing-div doing dropzone"></div>
         </section>
         <section class="done">
             <h2>Done</h2>
-            <div class="done-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div class="done-div done dropzone"></div>
         </section>
     </main>
 
