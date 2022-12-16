@@ -111,14 +111,9 @@ function createArticle(task) {
 }
 
 
-<<<<<<< HEAD
-function onDragStart(event) {
-    event.dataTansfer.setData("text/plain", event.target.id);
-=======
 export function onDragStart(event) {
     event.dataTransfer.setData("text", event.target.classList[0]);
     //event.currentTarget.style.opacity = "0.6";
->>>>>>> 974b18f181ce342bd0c1ba9eaf235a77fd3be0a1
 }
 
 export function onDragOver(event) {
