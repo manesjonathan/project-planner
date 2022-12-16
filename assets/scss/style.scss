@@ -100,10 +100,23 @@ main {
       margin-top: 1%;
       padding: 2%;
 
+      button {
+        border: none;
+        background: none;
+        width: fit-content;
+        margin-top: 2%;
+        .fa-solid {
+          right: 5vw;
+          top: 15vh;
+          padding: 1%;
+          color: red;
+          font-size: 1rem;
+        }
+      }
+
       h2 {
         font-size: 1.25rem;
         padding: 0;
-        
       }
 
       h3 {
@@ -113,7 +126,7 @@ main {
       p {
         font-size: 1rem;
         font-weight: 400;
-        font-family:'Elsie', cursive;
+        font-family: "Elsie", cursive;
       }
     }
   }
@@ -173,14 +186,12 @@ main {
   label {
     margin-top: 5%;
     margin-left: 5%;
-
   }
 
   button {
     margin: 5%;
   }
 }
-  
 
 footer {
   display: flex;

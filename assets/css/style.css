@@ -96,6 +96,19 @@ main section article {
   margin-top: 1%;
   padding: 2%;
 }
+main section article button {
+  border: none;
+  background: none;
+  width: fit-content;
+  margin-top: 2%;
+}
+main section article button .fa-solid {
+  right: 5vw;
+  top: 15vh;
+  padding: 1%;
+  color: red;
+  font-size: 1rem;
+}
 main section article h2 {
   font-size: 1.25rem;
   padding: 0;
