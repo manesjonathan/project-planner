@@ -89,6 +89,10 @@ main section article p {
   font-weight: 400;
 }
 
+.todo-div, .doing-div, .done-div {
+  min-height: 50vh;
+}
+
 .todo .todo-div article {
   background-color: #e87461;
 }
@@ -162,6 +166,10 @@ footer ul {
   }
   main section {
     min-height: 75vh;
+  }
+  aside {
+    margin: auto;
+    width: 50%;
   }
   footer ul {
     display: flex;

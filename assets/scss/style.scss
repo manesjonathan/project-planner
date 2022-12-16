@@ -97,6 +97,11 @@ main {
   }
 }
 
+.todo-div, .doing-div, .done-div{
+  min-height: 50vh;
+}
+
+
 .todo {
   .todo-div {
     article {
@@ -187,6 +192,10 @@ footer {
     section {
       min-height: 75vh;
     }
+  }
+  aside{
+    margin: auto;
+    width: 50%;
   }
 
   footer {

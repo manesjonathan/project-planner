@@ -6,38 +6,17 @@ const doing = document.querySelector(".doing-div");
 const done = document.querySelector(".done-div");
 const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
-const filterDelay = document.querySelector(".delay-filter")
-const filterName = document.querySelector(".name-filter")
-const filterToDo = document.querySelector(".todo--filter")
+const filterDelay = document.querySelector(".delay-filter");
+const filterName = document.querySelector(".name-filter");
+const filterToDo = document.querySelector(".todo-filter");
+const divList = document.querySelectorAll(".dropzone");
 
-
-
-buttonAdd.addEventListener("click", () => {
-    main.style.display = "none";
-    aside.style.display = "flex";
-    buttonAdd.style.display = "none";
-    filterDelay.style.display = "none";
-    filterName.style.display = "none";
-    clearInterval(interval);
-});
-
-filterDelay.addEventListener("click", () => {
-    filterByDelay()
-});
-
-filterName.addEventListener("click", () => {
-    filterByName()
-});
-
-filterToDo.addEventListener("click", () => {
-    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
-    let filteredTaskList = taskList.filter(function (elem) {
-        return elem.status === states.todo
-    })
-        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList))
-})
+let dragItemId = null;
+let taskListFull = JSON.parse(sessionStorage.getItem("task-list"));
 
 export function update() {
+    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
+
     aside.style.display = "none";
     buttonAdd.style.display = "block";
 
@@ -45,13 +24,29 @@ export function update() {
     doing.innerHTML = null;
     done.innerHTML = null;
 
-    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
     if (taskList !== null) {
-        for (let task of taskList) {
-            let article = createArticle(task);
+        for (let i = 0; i < taskList.length; i++) {
+            let task = taskList[i];
+            let article = createArticle(task, i);
             addArticleToSection(task, article);
         }
     }
+
+    if (filterToDo.checked) {
+
+        let filteredTaskList = taskList.filter(function (elem) {
+            return elem.status === states.todo
+        })
+        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList));
+        console.log(true);
+
+    }
+    else {
+
+        console.log(false);
+        sessionStorage.setItem("task-list", JSON.stringify(taskListFull));
+    }
+
 }
 
 function addArticleToSection(task, article) {
@@ -70,15 +65,14 @@ function addArticleToSection(task, article) {
     }
 }
 
-function createArticle(task) {
+function createArticle(task, i) {
     let creationDate = new Date(task.creationTime);
     let deadLine = new Date(task.deadLine);
 
     let article = document.createElement("article");
-    article.classList.toggle(task.status + "-" + task.id);
+    article.classList.toggle(task.status + "-" + i);
     article.classList.toggle(task.status);
     article.setAttribute("draggable", "true");
-    article.setAttribute("ondragstart", "onDragStart(event)")
 
     let title = document.createElement("h2");
     title.innerText = task.name;
@@ -106,48 +100,55 @@ function createArticle(task) {
         delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR") + " heures restantes";
     }
     article.appendChild(delay);
-
+    article.addEventListener('dragstart', dragStart);
+    article.addEventListener('dragend', dragEnd);
     return article;
 }
 
 
-export function onDragStart(event) {
-    event.dataTransfer.setData("text", event.target.classList[0]);
-    //event.currentTarget.style.opacity = "0.6";
+function dragStart() {
+    dragItemId = this.classList[0];
 }
 
-export function onDragOver(event) {
+function dragEnd() {
+}
+
+function onDragOver(event) {
+
     event.preventDefault();
 }
 
-export function onDrop(event) {
-    const id = event.dataTransfer.getData("text");
-    console.log(id);
+function onDrop(e) {
+    let taskList = taskListFull;
 
-    const draggableElement = document.querySelector("." + id);
-    console.log(draggableElement);
-    const dropzone = event.target.parentElement.parentElement;
+    for (let i = 0; i < taskList.length; i++) {
+        let task = taskList[i];
+        if (e.target.tagName !== "DIV") {
+            return;
+        }
 
-    dropzone.appendChild(draggableElement);
-    event.dataTransfer.clearData();
+        if (task.status !== e.target.classList[1]
+            && e.target.classList[1] !== task.status
+            && dragItemId === task.status + "-" + i) {
+            task.status = e.target.classList[1];
+            sessionStorage.setItem("task-list", JSON.stringify(taskList));
+        }
+    }
 }
 
-let taskList = JSON.parse(sessionStorage.getItem("task-list"))
-
 function filterByName() {
+    let taskList = taskListFull;
     if (taskList !== null) {
         taskList.sort((a, b) => (a.name > b.name) ? 1 : -1);
     }
-    console.log(taskList)
     sessionStorage.setItem('task-list', JSON.stringify(taskList))
-
-
 }
+
 function filterByDelay() {
+    let taskList = taskListFull;
     if (taskList !== null) {
         taskList.sort((a, b) => (a.delay > b.delay) ? 1 : -1);
     }
-    console.log(taskList)
     sessionStorage.setItem('task-list', JSON.stringify(taskList))
 
 }
@@ -162,7 +163,28 @@ function fixedHeader() {
     }
 }
 
+divList.forEach(div => {
+    div.addEventListener('dragover', onDragOver);
+    div.addEventListener('drop', onDrop);
+});
 
 
-let interval = setInterval(update, 1000);
+buttonAdd.addEventListener("click", () => {
+    main.style.display = "none";
+    aside.style.display = "flex";
+    buttonAdd.style.display = "none";
+    filterDelay.style.display = "none";
+    filterName.style.display = "none";
+    clearInterval(interval);
+});
+
+filterDelay.addEventListener("click", () => {
+    filterByDelay()
+});
+
+filterName.addEventListener("click", () => {
+    filterByName()
+});
+
+let interval = setInterval(update, 500);
 window.onscroll = function () { fixedHeader() };
