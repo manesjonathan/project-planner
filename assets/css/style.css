@@ -7,21 +7,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(-45deg, #595cff, #c6f8ff, #ffa585);
   background-size: 200% 200%;
-  -webkit-animation: gradient 10s ease infinite;
-          animation: gradient 10s ease infinite;
+  animation: gradient 10s ease infinite;
   height: 100%;
-}
-
-@-webkit-keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 @keyframes gradient {
@@ -72,8 +59,6 @@ header button {
   text-align: center;
   text-decoration: none;
   margin: 1%;
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
   min-width: fit-content;
   font-size: 1rem;
 }
@@ -99,8 +84,6 @@ main section {
   flex-direction: column;
   margin: 2%;
   background-color: rgba(243, 243, 243, 0.6039215686);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
 }
 main section h2 {
@@ -187,25 +170,27 @@ main section article p {
   text-decoration: underline;
 }
 
-.add-task-form {
+aside {
   display: none;
   flex-direction: column;
+  margin: auto;
   margin-top: 10vh;
+  height: 70vh;
 }
-.add-task-form input {
+aside input {
   padding: 2%;
   margin: 0 5%;
 }
-.add-task-form select {
+aside select {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
 }
-.add-task-form label {
+aside label {
   margin-top: 5%;
   margin-left: 5%;
 }
-.add-task-form button {
+aside button {
   margin: 5%;
 }
 
@@ -249,6 +234,7 @@ footer ul {
   }
   aside {
     margin: auto;
+    margin-top: 20vh;
     width: 50%;
   }
   footer ul {
