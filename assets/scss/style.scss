@@ -5,7 +5,8 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #ebebeb;
+  background-image: url("../image/background.jpg");
+  background-size: cover;
 }
 
 header {
@@ -13,15 +14,32 @@ header {
   flex-direction: column;
   align-items: center;
   align-content: center;
-  background-color: #555555;
+  background-color: #55555591;
   min-height: 10vh;
   width: 100%;
+  position: sticky;
 
   h1 {
     font-size: 1.5rem;
     text-align: center;
+
+    
+  }
+  input[type=checkbox] {
+    visibility: hidden;
   }
 
+  .todo{
+    background-color: #9d9d9d;
+    border: none;
+    color: white;
+    padding: 1vh;
+    text-align: center;
+    text-decoration: none;
+    margin: 2%;
+    min-width: 5vw;
+    
+  }
   button {
     background-color: #9d9d9d;
     border: none;
@@ -29,7 +47,6 @@ header {
     padding: 2vh;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     margin: 2%;
     min-width: 20vw;
   }
@@ -40,38 +57,29 @@ header {
   }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + main {
-  padding-top: 102px;
-}
-
 a {
   text-decoration: none;
   color: black;
 }
+
 main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  min-height: 80vh;
 
   section {
     display: flex;
     flex-direction: column;
     margin: 2%;
-    min-height: 50vw;
-    background-color: white;
+    background-color: #f3f3f3c2;
     border: 1px solid black;
+    height: fit-content;
 
     h2 {
-      font-size: 2rem;
+      font-size: 1rem;
       padding: 5%;
       text-transform: uppercase;
-      text-align: center;
     }
 
     article {
@@ -88,7 +96,7 @@ main {
       h3 {
         font-size: 1rem;
       }
-     
+
       p {
         font-size: 1rem;
         font-weight: 400;
@@ -97,10 +105,11 @@ main {
   }
 }
 
-.todo-div, .doing-div, .done-div{
-  min-height: 50vh;
+.todo-div,
+.doing-div,
+.done-div {
+  min-height: 15vh;
 }
-
 
 .todo {
   .todo-div {
@@ -152,11 +161,10 @@ main {
 footer {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   align-items: center;
-  background-color: #555555;
+  background-color: #55555591;
   color: white;
-  padding: 2%;
+  padding: 1%;
 
   a {
     text-decoration: none;
@@ -188,12 +196,8 @@ footer {
   main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
-    section {
-      min-height: 75vh;
-    }
   }
-  aside{
+  aside {
     margin: auto;
     width: 50%;
   }

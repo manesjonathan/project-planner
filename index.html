@@ -17,14 +17,14 @@
         <button class="add">Add task</button>
         <button class="delay-filter">Sort by delay</button>
         <button class="name-filter">Sort by name</button>
-        <input type="checkbox" class="todo-filter" id="todo--filter"><label for="todo--filter">ToDo Filter</label>
+        <label class="container" for="todo-filter">ToDo Filter <input type="checkbox" class="todo-filter"><span class="checkmark"></span></label>
         </input>
     </header>
 
     <main>
         <section class="todo">
             <h2>To do</h2>
-            <div class="todo-div todo dropzone" ></div>
+            <div class="todo-div todo dropzone"></div>
         </section>
         <section class="doing">
             <h2>Doing</h2>
@@ -49,7 +49,10 @@
         <input type="hidden" class="startdate">
         <label for="deadline">Deadline:</label>
         <input type="date" name="deadline" class="input-deadline">
-        <button class="submit-button">Add task</button>
+        <div class="buttons">
+            <button class="submit-button">Add task</button>
+            <button class="exit-button">Discard</button>
+        </div>
     </aside>
 
     <footer>
