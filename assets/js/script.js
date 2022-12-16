@@ -33,18 +33,14 @@ export function update() {
     }
 
     if (filterToDo.checked) {
-
         let filteredTaskList = taskList.filter(function (elem) {
             return elem.status === states.todo
         })
-        localStorage.setItem("task-list", JSON.stringify(filteredTaskList));
-        console.log(true);
-
+        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList));
     }
     else {
-        localStorage.setItem("task-list", JSON.stringify(taskListFull));
+        sessionStorage.setItem("task-list", JSON.stringify(taskListFull));
     }
-
 }
 
 function addArticleToSection(task, article) {
@@ -88,6 +84,14 @@ function createArticle(task, i) {
     endDate.innerText = "Deadline: " + deadLine.toLocaleDateString("fr-FR");
     article.appendChild(endDate);
 
+    let deleteButton = document.createElement("button");
+    deleteButton.addEventListener("click", function deleteTask(e) {
+        //e.parentElement.remove();
+        taskList.splice(i, task);
+        JSON.stringify(sessionStorage.setItem("task-list", taskList));
+    })
+    article.appendChild(deleteButton);
+
     let delay = document.createElement("h4");
 
     let deadline = new Date(task.deadLine) - new Date();
@@ -112,7 +116,6 @@ function dragEnd() {
 }
 
 function onDragOver(event) {
-
     event.preventDefault();
 }
 
