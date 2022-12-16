@@ -90,7 +90,7 @@ main section article p {
 }
 
 .todo-div, .doing-div, .done-div {
-  min-height: 100%;
+  min-height: 50vh;
 }
 
 .todo .todo-div article {
@@ -166,6 +166,10 @@ footer ul {
   }
   main section {
     min-height: 75vh;
+  }
+  aside {
+    margin: auto;
+    width: 50%;
   }
   footer ul {
     display: flex;
