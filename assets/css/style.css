@@ -61,6 +61,7 @@ header .todo {
   text-decoration: none;
   margin: 2%;
   min-width: 5vw;
+  border: 1px solid white;
 }
 header button {
   background-color: rgba(89, 92, 255, 0.2588235294);
