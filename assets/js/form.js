@@ -28,6 +28,7 @@ function createTask(name, status, description, creationTime, deadLine,) {
     );
 
     let taskList = JSON.parse(localStorage.getItem("task-list"));
+    localStorage.setItem("id-quantity", task.id);
 
     if (taskList !== null) {
 

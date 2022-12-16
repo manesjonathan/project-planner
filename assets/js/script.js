@@ -1,4 +1,5 @@
 import { states } from "./config.js";
+import { Task } from "./Task.js";
 
 const main = document.querySelector("main");
 const todo = document.querySelector(".todo-div");
@@ -12,8 +13,8 @@ const filterToDo = document.querySelector(".todo-filter");
 const divList = document.querySelectorAll(".dropzone");
 
 let dragItemId = null;
-
 //localStorage.clear();
+
 let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 
 export function update() {
@@ -29,7 +30,6 @@ export function update() {
         for (let i = 0; i < taskList.length; i++) {
             let task = taskList[i];
             let article = createArticle(task, i);
-            console.log(task.id);
             addArticleToSection(task, article);
         }
     }
@@ -38,10 +38,10 @@ export function update() {
         let filteredTaskList = taskList.filter(function (elem) {
             return elem.status === states.todo
         })
-        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList));
+        localStorage.setItem("task-list", JSON.stringify(filteredTaskList));
     }
     else {
-        sessionStorage.setItem("task-list", JSON.stringify(taskListFull));
+        localStorage.setItem("task-list", JSON.stringify(taskListFull));
     }
 }
 
@@ -105,6 +105,8 @@ function createArticle(task, i) {
     deleteButton.appendChild(icon);
     deleteButton.addEventListener("click", function deleteTask(e) {
         taskList = arrayRemove(taskList, task);
+        console.log(taskList.length)
+        taskListFull = taskList;
         localStorage.setItem("task-list", JSON.stringify(taskList));
         update();
     });
@@ -116,9 +118,9 @@ function createArticle(task, i) {
 }
 
 function arrayRemove(arr, task) {
-    const index = arr.indexOf(task);
 
-    return arr.slice(index, task);
+    return arr.filter(function (el) { return el.id != task.id; });
+
 
 }
 
