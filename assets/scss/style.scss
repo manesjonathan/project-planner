@@ -36,25 +36,29 @@ header {
 
   h1 {
     font-size: 1.5rem;
+    font-family: "Urbanist",sans-serif;
   }
   input[type="checkbox"] {
     visibility: hidden;
   }
 
   .todo {
-    background-color: #595cff42;
-    border: none;
+    background: linear-gradient(-45deg,#c6f8ff, #595cff, #ffa585);
+    border: 1px solid white;
+    border-radius:10px;
     color: white;
-    padding: 2vh;
+    padding: 1vh;
     text-align: center;
     text-decoration: none;
-    margin: 2%;
-    min-width: 5vw;
-    border: 1px solid white;
+    margin: 1%;
+    min-width: fit-content;
+    font-size: 1rem;
+    font-family: "Urbanist",sans-serif;
   }
   button {
     background-color: #595cff42;
     border: 1px solid white;
+    background: linear-gradient(-45deg,#c6f8ff, #595cff, #ffa585);
     border-radius: 60px;
     color: white;
     padding: 2vh;
@@ -63,6 +67,7 @@ header {
     margin: 1%;
     min-width: fit-content;
     font-size: 1rem;
+    font-family: "Urbanist",sans-serif;
   }
 
   a {
@@ -128,17 +133,20 @@ main {
       h3 {
         font-size: 1rem;
         font-family:'Elsie', cursive;
-        text-align: left;
+        padding: 0.5vw;
+      
       }
       h4{
         font-family:'Elsie', cursive;
-        text-align: left;
+        padding: 0.5vw;
+        
       }
 
       p {
         font-size: 1rem;
         font-weight: 400;
         font-family: "Elsie", cursive;
+        padding: 1vw;
       }
     }
   }
