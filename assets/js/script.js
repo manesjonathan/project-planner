@@ -18,10 +18,9 @@ let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 
 export function update() {
     let taskList = JSON.parse(localStorage.getItem("task-list"));
-
     aside.style.display = "none";
     buttonAdd.style.display = "block";
-
+    
     todo.innerHTML = null;
     doing.innerHTML = null;
     done.innerHTML = null;
