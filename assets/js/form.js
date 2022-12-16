@@ -1,5 +1,4 @@
 import { Task } from "./Task.js";
-
 let inputName = document.querySelector(".input-name");
 let inputStatesList = document.querySelector(".status-list");
 let inputDescription = document.querySelector(".input-description");
