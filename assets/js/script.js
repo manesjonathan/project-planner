@@ -12,6 +12,7 @@ const filterToDo = document.querySelector(".todo-filter");
 const divList = document.querySelectorAll(".dropzone");
 
 let dragItemId = null;
+
 //localStorage.clear();
 let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 
