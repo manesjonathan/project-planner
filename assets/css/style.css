@@ -91,6 +91,7 @@ main section article h3 {
 main section article p {
   font-size: 1rem;
   font-weight: 400;
+  font-family: "Elsie", cursive;
 }
 
 .todo-div, .doing-div, .done-div {

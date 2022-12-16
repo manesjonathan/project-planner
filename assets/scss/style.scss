@@ -89,6 +89,7 @@ main {
       h2 {
         font-size: 1.25rem;
         padding: 0;
+        
       }
 
       h3 {
@@ -98,6 +99,7 @@ main {
       p {
         font-size: 1rem;
         font-weight: 400;
+        font-family:'Elsie', cursive;
       }
     }
   }
@@ -148,12 +150,14 @@ main {
   label {
     margin-top: 5%;
     margin-left: 5%;
+
   }
 
   button {
     margin: 5%;
   }
 }
+  
 
 footer {
   display: flex;
