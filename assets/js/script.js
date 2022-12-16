@@ -1,5 +1,4 @@
 import { states } from "./config.js";
-import { Task } from "./Task.js";
 
 const main = document.querySelector("main");
 const todo = document.querySelector(".todo-div");
@@ -13,7 +12,6 @@ const filterToDo = document.querySelector(".todo-filter");
 const divList = document.querySelectorAll(".dropzone");
 
 let dragItemId = null;
-//localStorage.clear();
 
 let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 

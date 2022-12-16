@@ -6,8 +6,6 @@ let inputDescription = document.querySelector(".input-description");
 let inputDeadline = document.querySelector(".input-deadline");
 let submit = document.querySelector(".submit-button");
 let buttonDiscard= document.querySelector(".exit-button")
-let aside = document.querySelector("aside")
-let main = document.querySelector("main")
 
 buttonDiscard.addEventListener("click", ()=>{
     location.reload()
