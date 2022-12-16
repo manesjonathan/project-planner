@@ -84,17 +84,16 @@ function createArticle(task, i) {
     endDate.innerText = "Deadline: " + deadLine.toLocaleDateString("fr-FR");
     article.appendChild(endDate);
 
-    let deleteButton = document.createElement("button");
-    deleteButton.addEventListener("click", function deleteTask(e) {
-        //e.parentElement.remove();
-        taskList.splice(i, task);
-        JSON.stringify(sessionStorage.setItem("task-list", taskList));
-    })
-    article.appendChild(deleteButton);
-
     let delay = document.createElement("h4");
 
     let deadline = new Date(task.deadLine) - new Date();
+
+    let deleteButton = document.createElement("button");
+    deleteButton.addEventListener("click", function deleteTask(e) {
+        taskList.splice(i, task);
+        JSON.stringify(sessionStorage.setItem("task-list", taskList));
+    });
+    article.appendChild(deleteButton);
 
     if (deadline >= (1000 * 60 * 60 * 24)) {
         delay.innerText = Math.ceil(deadline / (1000 * 60 * 60 * 24)) + " jours restants";
