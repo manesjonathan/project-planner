@@ -118,7 +118,7 @@ main {
           right: 5vw;
           top: 15vh;
           padding: 1%;
-          color: red;
+          color: rgba(255, 0, 0, 0.418);
           font-size: 1rem;
         }
       }
@@ -264,12 +264,16 @@ footer {
 
   ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style-type: none;
     justify-content: space-around;
     text-transform: capitalize;
     font-weight: 600;
     margin-top: 2%;
+    width: 100%;
+    li{
+      margin: 5%;
+    }
   }
 }
 
@@ -288,7 +292,7 @@ footer {
   main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 10%;
+    margin-top: 15vh;
   }
   aside {
     margin: auto;

@@ -98,6 +98,7 @@ function createArticle(task, i) {
     article.appendChild(delay);
 
     let deleteButton = document.createElement("button");
+    deleteButton.setAttribute("title", "delete-button")
     let icon = document.createElement("i");
     icon.setAttribute("class", "fa-solid fa-trash-can");
     deleteButton.appendChild(icon);
