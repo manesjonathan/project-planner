@@ -33,18 +33,14 @@ export function update() {
     }
 
     if (filterToDo.checked) {
-
         let filteredTaskList = taskList.filter(function (elem) {
             return elem.status === states.todo
         })
-        localStorage.setItem("task-list", JSON.stringify(filteredTaskList));
-        console.log(true);
-
+        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList));
     }
     else {
-        localStorage.setItem("task-list", JSON.stringify(taskListFull));
+        sessionStorage.setItem("task-list", JSON.stringify(taskListFull));
     }
-
 }
 
 function addArticleToSection(task, article) {
@@ -112,7 +108,6 @@ function dragEnd() {
 }
 
 function onDragOver(event) {
-
     event.preventDefault();
 }
 
