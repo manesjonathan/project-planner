@@ -17,7 +17,7 @@
         <button class="add">Add task</button>
         <button class="delay-filter">Sort by delay</button>
         <button class="name-filter">Sort by name</button>
-        <input type="checkbox" class="todo-filter" id="todo--filter"><label for="todo--filter">ToDo Filter</label>
+        <input type="checkbox" class="todo-filter" id="todo--filter"><label for="todo--filter" class="todo">ToDo Filter</label>
         </input>
     </header>
 
@@ -49,7 +49,10 @@
         <input type="hidden" class="startdate">
         <label for="deadline">Deadline:</label>
         <input type="date" name="deadline" class="input-deadline">
-        <button class="submit-button">Add task</button>
+        <div class="buttons">
+            <button class="submit-button">Add task</button>
+            <button class="exit-button">Discard</button>
+        </div>
     </aside>
 
     <footer>

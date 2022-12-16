@@ -16,12 +16,29 @@ header {
   background-color: #555555;
   min-height: 10vh;
   width: 100%;
+  position: sticky;
 
   h1 {
     font-size: 1.5rem;
     text-align: center;
+
+    
+  }
+  input[type=checkbox] {
+    visibility: hidden;
   }
 
+  .todo{
+    background-color: #9d9d9d;
+    border: none;
+    color: white;
+    padding: 1vh;
+    text-align: center;
+    text-decoration: none;
+    margin: 2%;
+    min-width: 5vw;
+    
+  }
   button {
     background-color: #9d9d9d;
     border: none;
@@ -29,7 +46,6 @@ header {
     padding: 2vh;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     margin: 2%;
     min-width: 20vw;
   }
@@ -38,16 +54,6 @@ header {
     text-decoration: none;
     color: white;
   }
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + main {
-  padding-top: 102px;
 }
 
 a {

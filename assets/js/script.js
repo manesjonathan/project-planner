@@ -12,10 +12,10 @@ const filterToDo = document.querySelector(".todo-filter");
 const divList = document.querySelectorAll(".dropzone");
 
 let dragItemId = null;
-let taskListFull = JSON.parse(sessionStorage.getItem("task-list"));
+let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 
 export function update() {
-    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
+    let taskList = JSON.parse(localStorage.getItem("task-list"));
 
     aside.style.display = "none";
     buttonAdd.style.display = "block";
@@ -37,14 +37,12 @@ export function update() {
         let filteredTaskList = taskList.filter(function (elem) {
             return elem.status === states.todo
         })
-        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList));
+        localStorage.setItem("task-list", JSON.stringify(filteredTaskList));
         console.log(true);
 
     }
     else {
-
-        console.log(false);
-        sessionStorage.setItem("task-list", JSON.stringify(taskListFull));
+        localStorage.setItem("task-list", JSON.stringify(taskListFull));
     }
 
 }
@@ -131,7 +129,7 @@ function onDrop(e) {
             && e.target.classList[1] !== task.status
             && dragItemId === task.status + "-" + i) {
             task.status = e.target.classList[1];
-            sessionStorage.setItem("task-list", JSON.stringify(taskList));
+            localStorage.setItem("task-list", JSON.stringify(taskList));
         }
     }
 }
@@ -141,7 +139,7 @@ function filterByName() {
     if (taskList !== null) {
         taskList.sort((a, b) => (a.name > b.name) ? 1 : -1);
     }
-    sessionStorage.setItem('task-list', JSON.stringify(taskList))
+    localStorage.setItem('task-list', JSON.stringify(taskList))
 }
 
 function filterByDelay() {
@@ -149,18 +147,8 @@ function filterByDelay() {
     if (taskList !== null) {
         taskList.sort((a, b) => (a.delay > b.delay) ? 1 : -1);
     }
-    sessionStorage.setItem('task-list', JSON.stringify(taskList))
+    localStorage.setItem('task-list', JSON.stringify(taskList))
 
-}
-
-function fixedHeader() {
-    let header = document.querySelector("header");
-    let sticky = header.offsetTop;
-    if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-    } else {
-        header.classList.remove("sticky");
-    }
 }
 
 divList.forEach(div => {
