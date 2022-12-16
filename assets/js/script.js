@@ -21,7 +21,7 @@ export function update() {
     let taskList = JSON.parse(localStorage.getItem("task-list"));
     aside.style.display = "none";
     buttonAdd.style.display = "block";
-    
+
     todo.innerHTML = null;
     doing.innerHTML = null;
     done.innerHTML = null;
@@ -182,6 +182,7 @@ buttonAdd.addEventListener("click", () => {
     buttonAdd.style.display = "none";
     filterDelay.style.display = "none";
     filterName.style.display = "none";
+    document.querySelectorAll("label")[0].style.display = "none";
     clearInterval(interval);
 });
 
