@@ -89,7 +89,7 @@ function createArticle(task, i) {
     let deadline = new Date(task.deadLine) - new Date();
 
     let deleteButton = document.createElement("button");
-    deleteButton.classList.add("fa-solid fa-trash-can");
+    deleteButton.className.add("fa-solid fa-trash-can");
     deleteButton.addEventListener("click", function deleteTask(e) {
         taskList.splice(i, task);
         JSON.stringify(sessionStorage.setItem("task-list", taskList));
