@@ -103,12 +103,26 @@ main {
       text-align: center;
       border: 2px solid white;
 
+      button {
+        border: none;
+        background: none;
+        width: fit-content;
+        margin-top: 2%;
+        .fa-solid {
+          right: 5vw;
+          top: 15vh;
+          padding: 1%;
+          color: red;
+          font-size: 1rem;
+        }
+      }
+
       h2 {
         font-size: 1.25rem;
         padding: 0;
+
         text-align: center;
         font-family: 'Urbanist', sans-serif;
-        
       }
 
       h3 {
@@ -124,7 +138,7 @@ main {
       p {
         font-size: 1rem;
         font-weight: 400;
-        font-family:'Elsie', cursive;
+        font-family: "Elsie", cursive;
       }
     }
   }
@@ -186,10 +200,12 @@ main {
   }
 }
 
-.add-task-form {
+aside {
   display: none;
   flex-direction: column;
+  margin: auto;
   margin-top: 10vh;
+  height: 70vh;
   input {
     padding: 2%;
     margin: 0 5%;
@@ -203,14 +219,12 @@ main {
   label {
     margin-top: 5%;
     margin-left: 5%;
-
   }
 
   button {
     margin: 5%;
   }
 }
-  
 
 footer {
   display: flex;
@@ -254,6 +268,7 @@ footer {
   }
   aside {
     margin: auto;
+    margin-top: 20vh;
     width: 50%;
   }
 

@@ -12,6 +12,8 @@ const filterToDo = document.querySelector(".todo-filter");
 const divList = document.querySelectorAll(".dropzone");
 
 let dragItemId = null;
+
+//localStorage.clear();
 let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 
 export function update() {
@@ -28,6 +30,7 @@ export function update() {
         for (let i = 0; i < taskList.length; i++) {
             let task = taskList[i];
             let article = createArticle(task, i);
+            console.log(task.id);
             addArticleToSection(task, article);
         }
     }
@@ -60,6 +63,8 @@ function addArticleToSection(task, article) {
 }
 
 function createArticle(task, i) {
+    let taskList = JSON.parse(localStorage.getItem("task-list"));
+
     let creationDate = new Date(task.creationTime);
     let deadLine = new Date(task.deadLine);
 
@@ -77,7 +82,7 @@ function createArticle(task, i) {
     article.appendChild(descriptionContent);
 
     let startDate = document.createElement("h3");
-    startDate.innerText = "Start Date : "+ creationDate.toLocaleDateString("fr-FR");
+    startDate.innerText = "Start Date : " + creationDate.toLocaleDateString("fr-FR");
     article.appendChild(startDate);
 
     let endDate = document.createElement("h3");
@@ -88,25 +93,35 @@ function createArticle(task, i) {
 
     let deadline = new Date(task.deadLine) - new Date();
 
-    let deleteButton = document.createElement("button");
-    deleteButton.className.add("fa-solid fa-trash-can");
-    deleteButton.addEventListener("click", function deleteTask(e) {
-        taskList.splice(i, task);
-        JSON.stringify(sessionStorage.setItem("task-list", taskList));
-    });
-    article.appendChild(deleteButton);
-
     if (deadline >= (1000 * 60 * 60 * 24)) {
         delay.innerText = Math.ceil(deadline / (1000 * 60 * 60 * 24)) + " jours restants";
     } else {
         delay.innerText = new Date(deadline).toLocaleTimeString("fr-FR") + " heures restantes";
     }
     article.appendChild(delay);
+
+    let deleteButton = document.createElement("button");
+    let icon = document.createElement("i");
+    icon.setAttribute("class", "fa-solid fa-trash-can");
+    deleteButton.appendChild(icon);
+    deleteButton.addEventListener("click", function deleteTask(e) {
+        taskList = arrayRemove(taskList, task);
+        localStorage.setItem("task-list", JSON.stringify(taskList));
+        update();
+    });
+    article.appendChild(deleteButton);
+
     article.addEventListener('dragstart', dragStart);
     article.addEventListener('dragend', dragEnd);
     return article;
 }
 
+function arrayRemove(arr, task) {
+    const index = arr.indexOf(task);
+
+    return arr.slice(index, task);
+
+}
 
 function dragStart() {
     dragItemId = this.classList[0];
@@ -176,6 +191,4 @@ filterDelay.addEventListener("click", () => {
 filterName.addEventListener("click", () => {
     filterByName()
 });
-
 let interval = setInterval(update, 500);
-window.onscroll = function () { fixedHeader() };

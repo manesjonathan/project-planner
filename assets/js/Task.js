@@ -1,5 +1,5 @@
 export class Task {
-    static id = 1;
+    static id = 0;
 
     constructor(name, status, description, creationTime, deadLine) {
         this.id = Task.id++;
@@ -12,7 +12,7 @@ export class Task {
     }
 
     getId() {
-        return this.id;
+        return Task.id;
     }
 
     getName() {
