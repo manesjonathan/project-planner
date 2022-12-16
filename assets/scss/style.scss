@@ -25,13 +25,14 @@ body {
 
 header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   align-content: center;
-  background-color: #595cff42;
+  background: linear-gradient(-45deg, #c6f8ff, #595cff, #ffa585);
   min-height: 10vh;
   width: 100%;
-  position: sticky;
+  position: fixed;
+  top: 0;
 
   h1 {
     font-size: 1.5rem;
@@ -78,13 +79,12 @@ main {
   flex-direction: column;
   justify-content: space-around;
   min-height: 80vh;
-
+  margin-top: 15vh;
   section {
     display: flex;
     flex-direction: column;
     margin: 2%;
-    background-color: #f3f3f3c2;
-    border: 1px solid black;
+    background-color: #f3f3f39a;
     height: fit-content;
 
     h2 {
@@ -121,7 +121,8 @@ main {
 .todo-div,
 .doing-div,
 .done-div {
-  min-height: 15vh;
+  min-height: 25vh;
+  padding-bottom: 10vh;
 }
 
 .todo {
@@ -157,6 +158,7 @@ main {
 .add-task-form {
   display: none;
   flex-direction: column;
+  margin-top: 10vh;
   input {
     padding: 2%;
     margin: 0 5%;
@@ -211,12 +213,13 @@ footer {
     align-content: center;
     h1 {
       width: 100%;
-      text-align: center;
+      margin-left: 2%;
     }
   }
   main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 15vh;
   }
   aside {
     margin: auto;
