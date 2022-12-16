@@ -50,10 +50,12 @@ header {
     text-decoration: none;
     margin: 2%;
     min-width: 5vw;
+    border: 1px solid white;
   }
   button {
     background-color: #595cff42;
-    border: none;
+    border: 1px solid white;
+    border-radius: 60px;
     color: white;
     padding: 2vh;
     text-align: center;
@@ -98,15 +100,25 @@ main {
       flex-direction: column;
       margin-top: 1%;
       padding: 2%;
+      text-align: center;
+      border: 2px solid white;
 
       h2 {
         font-size: 1.25rem;
         padding: 0;
+        text-align: center;
+        font-family: 'Urbanist', sans-serif;
         
       }
 
       h3 {
         font-size: 1rem;
+        font-family:'Elsie', cursive;
+        text-align: left;
+      }
+      h4{
+        font-family:'Elsie', cursive;
+        text-align: left;
       }
 
       p {
@@ -130,8 +142,15 @@ main {
     article {
       h2 {
         background-color: #dd5e2f75;
+
       }
     }
+  }
+  #todo{
+    text-align: center;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
   }
 }
 
@@ -143,6 +162,12 @@ main {
       }
     }
   }
+  #doing{
+    text-align: center;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
+  }
 }
 
 .done {
@@ -152,6 +177,12 @@ main {
         background-color: #63c79d75;
       }
     }
+  }
+  #done{
+    text-align: center;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
   }
 }
 

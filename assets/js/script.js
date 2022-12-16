@@ -77,11 +77,11 @@ function createArticle(task, i) {
     article.appendChild(descriptionContent);
 
     let startDate = document.createElement("h3");
-    startDate.innerText = creationDate.toLocaleDateString("fr-FR");
+    startDate.innerText = "Start Date : "+ creationDate.toLocaleDateString("fr-FR");
     article.appendChild(startDate);
 
     let endDate = document.createElement("h3");
-    endDate.innerText = "Deadline: " + deadLine.toLocaleDateString("fr-FR");
+    endDate.innerText = "Deadline : " + deadLine.toLocaleDateString("fr-FR");
     article.appendChild(endDate);
 
     let deleteButton = document.createElement("button");
