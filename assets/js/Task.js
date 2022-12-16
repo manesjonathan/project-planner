@@ -1,18 +1,13 @@
 export class Task {
-    static id = 0;
 
     constructor(name, status, description, creationTime, deadLine) {
-        this.id = Task.id++;
+        this.id = new Number(localStorage.getItem("id-quantity")) + 1;
         this.name = name;
         this.status = status;
         this.description = description;
         this.creationTime = creationTime;
         this.deadLine = deadLine;
         this.delay = deadLine - creationTime;
-    }
-
-    getId() {
-        return Task.id;
     }
 
     getName() {
