@@ -9,7 +9,7 @@ body {
   background-size: 200% 200%;
   -webkit-animation: gradient 10s ease infinite;
           animation: gradient 10s ease infinite;
-  height: 100vh;
+  height: 100%;
 }
 
 @-webkit-keyframes gradient {
@@ -56,12 +56,11 @@ header .todo {
   background-color: rgba(89, 92, 255, 0.2588235294);
   border: none;
   color: white;
-  padding: 1vh;
+  padding: 2vh;
   text-align: center;
   text-decoration: none;
   margin: 2%;
   min-width: 5vw;
-  border: 1px solid white;
 }
 header button {
   background-color: rgba(89, 92, 255, 0.2588235294);
@@ -92,7 +91,7 @@ main {
   flex-direction: column;
   justify-content: space-around;
   min-height: 80vh;
-  margin-top: 15vh;
+  margin-top: 15%;
 }
 main section {
   display: flex;
@@ -232,7 +231,7 @@ footer ul {
   main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 15vh;
+    margin-top: 10%;
   }
   aside {
     margin: auto;
