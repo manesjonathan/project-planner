@@ -107,7 +107,6 @@ function createArticle(task, i) {
         console.log(taskList.length)
         taskListFull = taskList;
         localStorage.setItem("task-list", JSON.stringify(taskList));
-        update();
     });
     article.appendChild(deleteButton);
 
