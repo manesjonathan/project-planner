@@ -17,7 +17,6 @@ let taskListFull = JSON.parse(localStorage.getItem("task-list"));
 
 export function update() {
     let taskList = JSON.parse(localStorage.getItem("task-list"));
-    aside.style.display = "none";
     buttonAdd.style.display = "block";
 
     todo.innerHTML = null;
@@ -175,8 +174,10 @@ divList.forEach(div => {
 
 
 buttonAdd.addEventListener("click", () => {
-    main.style.display = "none";
-    aside.style.display = "flex";
+    
+    document.querySelector("aside").style.width = "35%";
+    document.querySelector("main").style.marginLeft = "35%";
+    
     buttonAdd.style.display = "none";
     filterDelay.style.display = "none";
     filterName.style.display = "none";
