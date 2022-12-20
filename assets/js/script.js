@@ -31,10 +31,11 @@ filterName.addEventListener("click", () => {
 
 filterToDo.addEventListener("click", () => {
     let taskList = JSON.parse(sessionStorage.getItem("task-list"));
+
     let filteredTaskList = taskList.filter(function (elem) {
         return elem.status === states.todo
     })
-        sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList))
+    sessionStorage.setItem("task-list", JSON.stringify(filteredTaskList))
 })
 
 export function update() {
@@ -122,11 +123,26 @@ export function onDragOver(event) {
 
 export function onDrop(event) {
     const id = event.dataTransfer.getData("text");
-    console.log(id);
-
     const draggableElement = document.querySelector("." + id);
-    console.log(draggableElement);
     const dropzone = event.target.parentElement.parentElement;
+    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
+    console.log(taskList);
+
+    for (let i = 0; i < taskList.length; i++) {
+        let task = taskList[i];
+        if (task.status + "-" + task.id === id) {
+
+            const index = taskList.indexOf(i);
+            taskList.splice(index, i);
+            console.log(taskList);
+
+            task.status = states.done;
+            taskList.push(task);
+            console.log(taskList);
+
+        }
+    }
+
 
     dropzone.appendChild(draggableElement);
     //draggableElement.style.opacity = "1";
