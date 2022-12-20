@@ -6,10 +6,12 @@ const doing = document.querySelector(".doing-div");
 const done = document.querySelector(".done-div");
 const buttonAdd = document.querySelector(".add");
 const aside = document.querySelector(".add-task-form");
-const filterDelay = document.querySelector(".delay-filter")
-const filterName = document.querySelector(".name-filter")
-const filterToDo = document.querySelector(".todo--filter")
+const filterDelay = document.querySelector(".delay-filter");
+const filterName = document.querySelector(".name-filter");
+const filterToDo = document.querySelector(".todo-filter");
+const divList = document.querySelectorAll(".dropzone");
 
+let dragItemId = null;
 
 
 buttonAdd.addEventListener("click", () => {
@@ -39,19 +41,29 @@ filterToDo.addEventListener("click", () => {
 })
 
 export function update() {
-    aside.style.display = "none";
+    let taskList = JSON.parse(localStorage.getItem("task-list"));
     buttonAdd.style.display = "block";
 
     todo.innerHTML = null;
     doing.innerHTML = null;
     done.innerHTML = null;
 
-    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
     if (taskList !== null) {
-        for (let task of taskList) {
-            let article = createArticle(task);
+        for (let i = 0; i < taskList.length; i++) {
+            let task = taskList[i];
+            let article = createArticle(task, i);
             addArticleToSection(task, article);
         }
+    }
+
+    if (filterToDo.checked) {
+        let filteredTaskList = taskList.filter(function (elem) {
+            return elem.status === states.todo
+        })
+        localStorage.setItem("task-list", JSON.stringify(filteredTaskList));
+    }
+    else {
+        localStorage.setItem("task-list", JSON.stringify(taskListFull));
     }
 }
 
@@ -71,15 +83,16 @@ function addArticleToSection(task, article) {
     }
 }
 
-function createArticle(task) {
+function createArticle(task, i) {
+    let taskList = JSON.parse(localStorage.getItem("task-list"));
+
     let creationDate = new Date(task.creationTime);
     let deadLine = new Date(task.deadLine);
 
     let article = document.createElement("article");
-    article.classList.toggle(task.status + "-" + task.id);
+    article.classList.toggle(task.status + "-" + i);
     article.classList.toggle(task.status);
     article.setAttribute("draggable", "true");
-    article.setAttribute("ondragstart", "onDragStart(event)")
 
     let title = document.createElement("h2");
     title.innerText = task.name;
@@ -90,11 +103,11 @@ function createArticle(task) {
     article.appendChild(descriptionContent);
 
     let startDate = document.createElement("h3");
-    startDate.innerText = creationDate.toLocaleDateString("fr-FR");
+    startDate.innerText = "Start Date : " + creationDate.toLocaleDateString("fr-FR");
     article.appendChild(startDate);
 
     let endDate = document.createElement("h3");
-    endDate.innerText = "Deadline: " + deadLine.toLocaleDateString("fr-FR");
+    endDate.innerText = "Deadline : " + deadLine.toLocaleDateString("fr-FR");
     article.appendChild(endDate);
 
     let delay = document.createElement("h4");
@@ -108,16 +121,39 @@ function createArticle(task) {
     }
     article.appendChild(delay);
 
+    let deleteButton = document.createElement("button");
+    deleteButton.setAttribute("title", "delete-button")
+    let icon = document.createElement("i");
+    icon.setAttribute("class", "fa-solid fa-trash-can");
+    deleteButton.appendChild(icon);
+    deleteButton.addEventListener("click", function deleteTask(e) {
+        taskList = arrayRemove(taskList, task);
+        console.log(taskList.length)
+        taskListFull = taskList;
+        localStorage.setItem("task-list", JSON.stringify(taskList));
+    });
+    article.appendChild(deleteButton);
+
+    article.addEventListener('dragstart', dragStart);
+    article.addEventListener('dragend', dragEnd);
     return article;
 }
 
+function arrayRemove(arr, task) {
 
-export function onDragStart(event) {
-    event.dataTransfer.setData("text", event.target.classList[0]);
-    //event.currentTarget.style.opacity = "0.6";
+    return arr.filter(function (el) { return el.id != task.id; });
+
+
 }
 
-export function onDragOver(event) {
+function dragStart() {
+    dragItemId = this.classList[0];
+}
+
+function dragEnd() {
+}
+
+function onDragOver(event) {
     event.preventDefault();
 }
 
@@ -144,42 +180,55 @@ export function onDrop(event) {
     }
 
 
-    dropzone.appendChild(draggableElement);
-    //draggableElement.style.opacity = "1";
-    event.dataTransfer.clearData();
+        if (task.status !== e.target.classList[1]
+            && e.target.classList[1] !== task.status
+            && dragItemId === task.status + "-" + i) {
+            task.status = e.target.classList[1];
+            localStorage.setItem("task-list", JSON.stringify(taskList));
+        }
+    }
 }
 
-let taskList = JSON.parse(sessionStorage.getItem("task-list"))
-
 function filterByName() {
+    let taskList = taskListFull;
     if (taskList !== null) {
         taskList.sort((a, b) => (a.name > b.name) ? 1 : -1);
     }
-    console.log(taskList)
-    sessionStorage.setItem('task-list', JSON.stringify(taskList))
-
-
+    localStorage.setItem('task-list', JSON.stringify(taskList))
 }
+
 function filterByDelay() {
+    let taskList = taskListFull;
     if (taskList !== null) {
         taskList.sort((a, b) => (a.delay > b.delay) ? 1 : -1);
     }
-    console.log(taskList)
-    sessionStorage.setItem('task-list', JSON.stringify(taskList))
+    localStorage.setItem('task-list', JSON.stringify(taskList))
 
 }
 
-function fixedHeader() {
-    let header = document.querySelector("header");
-    let sticky = header.offsetTop;
-    if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-    } else {
-        header.classList.remove("sticky");
-    }
-}
+divList.forEach(div => {
+    div.addEventListener('dragover', onDragOver);
+    div.addEventListener('drop', onDrop);
+});
 
 
+buttonAdd.addEventListener("click", () => {
+    
+    document.querySelector("aside").style.width = "35%";
+    document.querySelector("main").style.marginLeft = "35%";
+    
+    buttonAdd.style.display = "none";
+    filterDelay.style.display = "none";
+    filterName.style.display = "none";
+    document.querySelectorAll("label")[0].style.display = "none";
+    clearInterval(interval);
+});
 
-let interval = setInterval(update, 1000);
-window.onscroll = function () { fixedHeader() };
+filterDelay.addEventListener("click", () => {
+    filterByDelay()
+});
+
+filterName.addEventListener("click", () => {
+    filterByName()
+});
+let interval = setInterval(update, 500);

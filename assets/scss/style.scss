@@ -5,33 +5,70 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #ebebeb;
+  background: linear-gradient(-45deg, #595cff, #c6f8ff, #ffa585);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+  height: 100%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 header {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
   align-content: center;
-  background-color: #555555;
+  background: linear-gradient(-45deg, #c6f8ff, #595cff, #ffa585);
   min-height: 10vh;
   width: 100%;
+  position: fixed;
+  top: 0;
 
   h1 {
+    margin: 1%;
     font-size: 1.5rem;
+    font-family: "Urbanist", sans-serif;
     text-align: center;
   }
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
 
+  .todo {
+    background: linear-gradient(-45deg, #c6f8ff, #595cff, #ffa585);
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    padding: 1vh;
+    text-align: center;
+    text-decoration: none;
+    margin: 1%;
+    min-width: fit-content;
+    font-size: 1rem;
+    font-family: "Urbanist", sans-serif;
+  }
   button {
-    background-color: #9d9d9d;
-    border: none;
+    background-color: #595cff42;
+    border: 1px solid white;
+    background: linear-gradient(-45deg, #c6f8ff, #595cff, #ffa585);
+    border-radius: 60px;
     color: white;
     padding: 2vh;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    margin: 2%;
-    min-width: 20vw;
+    margin: 1%;
+    min-width: fit-content;
+    font-size: 1rem;
+    font-family: "Urbanist", sans-serif;
   }
 
   a {
@@ -40,38 +77,28 @@ header {
   }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + main {
-  padding-top: 102px;
-}
-
 a {
   text-decoration: none;
   color: black;
 }
+
 main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
+  min-height: 80vh;
+  margin-top: 45vh;
   section {
     display: flex;
     flex-direction: column;
     margin: 2%;
-    min-height: 50vw;
-    background-color: white;
-    border: 1px solid black;
+    background-color: #f3f3f39a;
+    height: fit-content;
 
     h2 {
-      font-size: 2rem;
+      font-size: 1rem;
       padding: 5%;
       text-transform: uppercase;
-      text-align: center;
     }
 
     article {
@@ -79,51 +106,112 @@ main {
       flex-direction: column;
       margin-top: 1%;
       padding: 2%;
+      text-align: center;
+      border: 2px solid white;
+
+      button {
+        border: none;
+        background: none;
+        width: fit-content;
+        margin-top: 2%;
+        .fa-solid {
+          right: 5vw;
+          top: 15vh;
+          padding: 1%;
+          color: rgba(255, 0, 0, 0.418);
+          font-size: 1rem;
+        }
+      }
 
       h2 {
         font-size: 1.25rem;
         padding: 0;
+
+        text-align: center;
+        font-family: "Urbanist", sans-serif;
       }
 
       h3 {
         font-size: 1rem;
+        font-family: "Elsie", cursive;
+        padding: 0.5vw;
       }
-     
+      h4 {
+        font-family: "Elsie", cursive;
+        padding: 0.5vw;
+      }
+
       p {
         font-size: 1rem;
         font-weight: 400;
+        font-family: "Elsie", cursive;
+        padding: 1vw;
       }
     }
   }
 }
 
+.todo-div,
+.doing-div,
+.done-div {
+  min-height: 25vh;
+  padding-bottom: 10vh;
+}
+
 .todo {
   .todo-div {
     article {
-      background-color: #e87461;
+      h2 {
+        background-color: #dd5e2f75;
+      }
     }
+  }
+  #todo {
+    text-align: center;
+    font-family: "Urbanist", sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
   }
 }
 
 .doing {
   .doing-div {
     article {
-      background-color: #d5d887;
+      h2 {
+        background-color: #595cff75;
+      }
     }
+  }
+  #doing {
+    text-align: center;
+    font-family: "Urbanist", sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
   }
 }
 
 .done {
   .done-div {
     article {
-      background-color: #a1cf6b;
+      h2 {
+        background-color: #63c79d75;
+      }
     }
+  }
+  #done {
+    text-align: center;
+    font-family: "Urbanist", sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
   }
 }
 
-.add-task-form {
+aside {
   display: none;
   flex-direction: column;
+  margin: auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   input {
     padding: 2%;
     margin: 0 5%;
@@ -132,27 +220,43 @@ main {
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
+    height: 5vh;
+    font-size: 1.25rem;
+    font-family: "Elsie", cursive;
   }
 
   label {
     margin-top: 5%;
     margin-left: 5%;
+    font-family: "Elsie", cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   button {
+    background-color: #595cff42;
+    border: 1px solid white;
+    background: linear-gradient(-45deg, #c6f8ff, #595cff, #ffa585);
+    border-radius: 60px;
+    color: white;
+    padding: 2vh;
+    text-align: center;
+    text-decoration: none;
     margin: 5%;
+    min-width: fit-content;
+    font-size: 1rem;
+    font-family: "Urbanist", sans-serif;
   }
 }
 
 footer {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   align-items: center;
-  background-color: #555555;
+  background-color: #595cff42;
   color: white;
-  padding: 2%;
-
+  padding: 1%;
+  
   a {
     text-decoration: none;
     color: white;
@@ -160,12 +264,16 @@ footer {
 
   ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style-type: none;
     justify-content: space-around;
     text-transform: capitalize;
     font-weight: 600;
     margin-top: 2%;
+    width: 100%;
+    li {
+      margin: 5%;
+    }
   }
 }
 
@@ -177,16 +285,19 @@ footer {
     align-content: center;
     h1 {
       width: 100%;
-      text-align: center;
+      margin-left: 2%;
+      text-align: start;
     }
   }
   main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
-    section {
-      min-height: 75vh;
-    }
+    margin-top: 15vh;
+  }
+  aside {
+    margin: auto;
+    margin-top: 20vh;
+    width: 50%;
   }
 
   footer {

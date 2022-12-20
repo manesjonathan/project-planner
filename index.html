@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Planner">
     <title>Project Planner</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+<!--     <link rel="stylesheet" href="/assets/css/style.css" class="alternate-style" title="custom-0">-->    
+<link rel="stylesheet" href="/assets/css/custom-1.css" class="alternate-style" title="custom-1">
+    <script src="https://kit.fontawesome.com/26838d0dd7.js" crossorigin="anonymous"></script>
     <script defer src="/assets/js/script.js" type="module"></script>
-    <script type="module">import { onDragOver } from "/assets/js/script.js"; window.onDragOver = onDragOver;</script>
-    <script type="module">import { onDrop} from "/assets/js/script.js"; window.onDrop = onDrop;</script>
-    <script type="module">import { onDragStart} from "/assets/js/script.js"; window.onDragStart = onDragStart;</script>
     <script defer src="/assets/js/form.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,700&family=Elsie&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@1,900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -20,22 +26,23 @@
         <button class="add">Add task</button>
         <button class="delay-filter">Sort by delay</button>
         <button class="name-filter">Sort by name</button>
-        <button class="todo--filter">Todo Filter
-        </button>
+        <input type="checkbox" class="todo-filter" id="todo--filter"><label for="todo--filter" class="todo">ToDo
+            Filter</label>
+        </input>
     </header>
 
     <main>
         <section class="todo">
-            <h2>To do</h2>
-            <div class="todo-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <h2 id="todo">To do</h2>
+            <div class="todo-div todo dropzone"></div>
         </section>
         <section class="doing">
-            <h2>Doing</h2>
-            <div class="doing-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <h2 id="doing">Doing</h2>
+            <div class="doing-div doing dropzone"></div>
         </section>
         <section class="done">
-            <h2>Done</h2>
-            <div class="done-div" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <h2 id="done">Done</h2>
+            <div class="done-div done dropzone"></div>
         </section>
     </main>
 
@@ -43,7 +50,7 @@
         <label for="name">Name:</label>
         <input type="text" name="name" class="input-name">
         <select class="status-list" name="statuslist">
-            <option value="todo">Todo</option>
+            <option value="todo">To-do</option>
             <option value="doing">Doing</option>
             <option value="done">Done</option>
         </select>
@@ -51,8 +58,11 @@
         <input type="text" name="description" class="input-description">
         <input type="hidden" class="startdate">
         <label for="deadline">Deadline:</label>
-        <input type="date" name="deadline" class="input-deadline">
-        <button class="submit-button">Add task</button>
+        <input type="datetime-local" name="deadline" class="input-deadline">
+        <div class="buttons">
+            <button class="exit-button">Discard</button>
+            <button class="submit-button">Add task</button>
+        </div>
     </aside>
 
     <footer>
