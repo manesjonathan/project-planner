@@ -42,6 +42,7 @@ filterToDo.addEventListener("click", () => {
 
 export function update() {
     let taskList = JSON.parse(localStorage.getItem("task-list"));
+    let taskListFull = taskList;
     buttonAdd.style.display = "block";
 
     todo.innerHTML = null;
@@ -159,33 +160,17 @@ function onDragOver(event) {
 
 export function onDrop(event) {
     const id = event.dataTransfer.getData("text");
+    console.log(id);
+
     const draggableElement = document.querySelector("." + id);
+    console.log(draggableElement);
     const dropzone = event.target.parentElement.parentElement;
-    let taskList = JSON.parse(sessionStorage.getItem("task-list"));
-    console.log(taskList);
 
-    for (let i = 0; i < taskList.length; i++) {
-        let task = taskList[i];
-        if (task.status + "-" + task.id === id) {
-
-            const index = taskList.indexOf(i);
-            taskList.splice(index, i);
-            console.log(taskList);
-
-            task.status = states.done;
-            taskList.push(task);
-            console.log(taskList);
-
-        }
-    }
-
-
-        if (task.status !== e.target.classList[1]
-            && e.target.classList[1] !== task.status
-            && dragItemId === task.status + "-" + i) {
-            task.status = e.target.classList[1];
-            localStorage.setItem("task-list", JSON.stringify(taskList));
-        }
+    if (task.status !== e.target.classList[1]
+        && e.target.classList[1] !== task.status
+        && dragItemId === task.status + "-" + i) {
+        task.status = e.target.classList[1];
+        localStorage.setItem("task-list", JSON.stringify(taskList));
     }
 }
 
@@ -213,10 +198,10 @@ divList.forEach(div => {
 
 
 buttonAdd.addEventListener("click", () => {
-    
+
     document.querySelector("aside").style.width = "35%";
     document.querySelector("main").style.marginLeft = "35%";
-    
+
     buttonAdd.style.display = "none";
     filterDelay.style.display = "none";
     filterName.style.display = "none";
